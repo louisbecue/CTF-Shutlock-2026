@@ -1,0 +1,72 @@
+profile scanner /usr/local/sbin/scanner {
+  #include <abstractions/base>
+  #include <abstractions/bash>
+
+  /lib/**           rm,
+  /lib64/**         rm,
+  /usr/lib/**       rm,
+  /usr/lib64/**     rm,
+  /usr/lib/x86_64-linux-gnu/** rm,
+
+  /bin/**           rix,
+  /usr/bin/**       rix,
+  /sbin/**          rix,
+  /usr/sbin/**      rix,
+  /usr/local/bin/** rix,
+
+  /usr/local/sbin/scanner rix,
+
+  /var/scan/        r,
+  /var/scan/*.txt   r,
+
+  /var/scan/*       rw,
+
+  /var/log/scanner.log rw,
+  /var/log/          r,
+
+  /proc/**          r,
+  /etc/**           r,
+
+  /secure_data/     r,
+  /secure_data/**   r,
+
+  /var/scan/**      px -> var_scan_binary,
+
+  capability dac_override,
+  capability dac_read_search,
+  capability setuid,
+  capability setgid,
+  capability kill,
+
+  signal (send) set=(term,kill,hup,pipe),
+  signal (receive) set=(term,kill,hup,pipe),
+
+  /dev/null         rw,
+  /dev/pts/*        rw,
+}
+
+profile var_scan_binary {
+  #include <abstractions/base>
+
+  /lib/**                        rm,
+  /lib64/**                      rm,
+  /usr/lib/**                    rm,
+  /usr/lib64/**                  rm,
+  /usr/lib/x86_64-linux-gnu/**   rm,
+
+  /secure_data/                  r,
+  /secure_data/**                r,
+  /var/scan/                     r,
+  /var/scan/**                   rw,
+  /tmp/**                        rw,
+
+  /proc/self/**                  r,
+  /proc/self/fd/                 r,
+
+  /dev/null                      rw,
+
+  deny /home/**                  rwx,
+  deny /root/**                  rwx,
+  deny /etc/shadow               r,
+  deny /etc/passwd               w,
+}

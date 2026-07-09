@@ -1,0 +1,15 @@
+[Unit]
+Description=Initialisation AppArmor - Listembourg
+DefaultDependencies=no
+After=local-fs.target sysinit.target apparmor.service
+Before=scanner.service sshd.service multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/firstboot.sh
+RemainAfterExit=yes
+StandardOutput=journal+console
+StandardError=journal+console
+
+[Install]
+WantedBy=multi-user.target

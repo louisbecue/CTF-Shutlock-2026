@@ -1,0 +1,20 @@
+[Unit]
+Description=Scanner de sécurité - Listembourg
+After=network.target apparmor-firstboot.service
+Requires=apparmor-firstboot.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/scanner
+Restart=on-failure
+RestartSec=5
+
+User=root
+Group=root
+
+# AppArmor va confiner automatiquement le process via le profil /etc/apparmor.d/usr.local.sbin.scanner
+StandardOutput=append:/var/log/scanner.log
+StandardError=append:/var/log/scanner.log
+
+[Install]
+WantedBy=multi-user.target

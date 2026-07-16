@@ -76,7 +76,7 @@ void main(void)
   } while( true );
 }
 ```
-Dans le case 1 on une allocation mémoire et un pointeur de fonction est ecrit a l'offset `0x20`.
+Dans le case 1 on une allocation mémoire et un pointeur de fonction est écrit a l'offset `0x20`.
 
 ```c
 c = malloc(0x40028);
@@ -84,7 +84,7 @@ builtin_strncpy(c,"Espresso",9);
 *(code **)(c + 0x20) = normal_drink;
 ```
 
-Le case 2 autorise ensuite une ecriture de `0x40` octets dans cette zone. Si l'on choisit une recette valide comme `espresso`, la verification ne libere pas le buffer, ce qui permet de corrompre le pointeur de fonction et de l'écrasser avec une valeur arbitrire.
+Le case 2 autorise ensuite une écriture de `0x40` octets dans cette zone. Si l'on choisit une recette valide comme `espresso`, la vérification ne libère pas le buffer, ce qui permet de corrompre le pointeur de fonction et de l'écrasser.
 
 ```c
 if (c == (char *)0x0) {
@@ -136,7 +136,7 @@ void secret(void)
 
 ## Exploitation
 
-L'exploitation consiste a enchainer les actions suivantes :
+L'exploitation enchaine les actions suivantes :
 
 1. Lancer le programme `launcher`.
 2. Choisir le case 1 pour allouer et initialiser la structure.

@@ -6,9 +6,7 @@ Nous avons intercepté une archive MLA. Cette archive contient le code PIN du t�
 
 ## Analyse
 
-Le point cle est que le fichier contenu dans l'archive fait seulement 4 octets. Cela indique que le PIN est compose de 4 chiffres.
-
-En lisant la premiere entree, on obtient le hash SHA-256 du contenu attendu :
+En lisant la premiere entrée, on obtient le hash SHA-256 du code pin :
 
 ```text
 eb7539924cf4b8b67488575210db3526ec7c2daaf546705ac37e5039c71c36f3
@@ -17,8 +15,6 @@ eb7539924cf4b8b67488575210db3526ec7c2daaf546705ac37e5039c71c36f3
 Comme le fichier ne contient que 4 chiffres, il suffit de tester tous les codes de `0000` a `9999` et de comparer leur SHA-256 avec ce hash.
 
 ## Exploitation
-
-On tulise une méthode par brute force, pour chaque valeur sur 4 chiffres, on calcule son SHA-256 et on compare avec le hash extrait de l'archive.
 
 ```python
 import hashlib

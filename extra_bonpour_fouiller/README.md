@@ -24,13 +24,13 @@ Le processus interessant est donc `loader`, avec le PID `873`.
 
 ### Extraction de la memoire
 
-Une fois le PID identifie, on dump la memoire du processus :
+On dump la memoire du processus :
 
 ```bash
 python3 /home/louis/Git/volatility3/vol.py -f memory.lime linux.proc.Maps --pid 873 --dump
 ```
 
-Le dump de la heap permet ensuite d'extraire des chaines exploitables :
+Le dump de la heap permet d'extraire des chaines exploitables :
 
 ```bash
 strings pid.873.vma.0x562d4f89b000-0x562d4f8bc000.dmp
@@ -43,7 +43,7 @@ volatile unsigned char enc[C2_LEN] = { 0x16, 0x13, 0x12, 0x06, 0x11, 0x5a,
 evt->c2_decoded[i] = enc[i] ^ key[i % XOR_KEY_LEN];
 ```
 
-Le code montre que la chaine de C2 est chiffree avec un XOR entre `enc` et une clé repetee.
+Le code montre que la chaine de C2 est chiffree avec un XOR entre `enc` et une clé.
 
 ### Recherche de la clé
 
@@ -86,7 +86,7 @@ Soit la clé `baguette67`.
 
 ### Dechiffrement
 
-Avec la clé, le domaine de C2 se dechiffre simplement par XOR.
+Avec la clé, le domaine de C2 se dechiffre avec un XOR.
 
 ```python
 enc = bytes([0x16, 0x13, 0x12, 0x06, 0x11, 0x5a, 0x07, 0x0d, 0x43,0x43, 0x0e, 0x0e, 0x08, 0x1e, 0x4b, 0x12, 0x06,])

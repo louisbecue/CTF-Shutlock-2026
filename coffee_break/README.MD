@@ -1,6 +1,6 @@
 # Coffea break
 
-## Enonce
+## Énoncé
 
 Notre cellule de crise vient de recevoir une archive interceptée par l'insaisissable Virginia Hall. Il s'agit du panneau de contrôle et du micrologiciel de la machine à café du bureau ovale ennemi.
 
@@ -10,7 +10,7 @@ Trouverez-vous le bon dosage pour faire sauter les verrous ?
 
 ## Analyse
 
-L'analyse du binaire `coffea_break` dans Ghidra montre un probléme de gestion de la mémoire dans la fonction `main` :
+L'analyse de la fonction main sous Ghidra montre que le binaire `coffea_break` montre une vulnérabilité de corruption mémoire dans la fonction `main`:
 
 ```c
 void main(void)
@@ -76,7 +76,7 @@ void main(void)
   } while( true );
 }
 ```
-Dans le case 1 on une allocation mémoire et un pointeur de fonction est écrit a l'offset `0x20`.
+Dans le case 1 on a une allocation mémoire et un pointeur de fonction est écrit a l'offset `0x20`.
 
 ```c
 c = malloc(0x40028);
@@ -84,7 +84,7 @@ builtin_strncpy(c,"Espresso",9);
 *(code **)(c + 0x20) = normal_drink;
 ```
 
-Le case 2 autorise ensuite une écriture de `0x40` octets dans cette zone. Si l'on choisit une recette valide comme `espresso`, la vérification ne libère pas le buffer, ce qui permet de corrompre le pointeur de fonction et de l'écrasser.
+Le case 2 autorise ensuite une écriture de `0x40` octets dans cette zone. Si l'on choisit une recette valide comme espresso, la vérification ne libère pas le buffer, on peut donc corrompre le pointeur de fonction à l'offset `0x20` et de l'écrasser.
 
 ```c
 if (c == (char *)0x0) {
@@ -102,7 +102,7 @@ else {
 }
 ```
 
-Enfin, le case 3 appelle directement le pointeur stocke a `c + 0x20`.
+Enfin, le case 3 appelle directement le pointeur corrompu.
 
 ```c
 else {
@@ -110,7 +110,7 @@ else {
 }
 ```
 
-Le binaire contient aussi une fonction `secret` qui execute un shell :
+Le binaire contient une fonction `secret` qui est la routine d'accès dérobée déposé par Virginia qui éxecute un shell :
 
 ```c
 void secret(void)
@@ -136,7 +136,7 @@ void secret(void)
 
 ## Exploitation
 
-L'exploitation enchaine les actions suivantes :
+On doit donc :
 
 1. Lancer le programme `launcher`.
 2. Choisir le case 1 pour allouer et initialiser la structure.

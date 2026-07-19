@@ -1,10 +1,8 @@
 # Shutlock 2026
 
-Classement : 66e place.
+Classement : 65e place
 
-Shutlock est un CTF organisé par la DSGI, OVH et EPITA.
-
-Site officiel : https://shutlock.fr/
+Le Shutlock est un CTF organisé par la DSGI, OVH et EPITA.
 
 ## Challenges avec raports
 

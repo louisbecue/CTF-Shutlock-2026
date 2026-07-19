@@ -1,6 +1,6 @@
 # Archives a couches multiples (1/3)
 
-## Enonce
+## Énoncé
 
 Nous avons intercepté une archive MLA. Cette archive contient le code PIN du téléphone d'une cible. Il nous faut à tout prix ce code PIN pour accéder au téléphone de la cible. Malheureusement, l'archive est corrompue. Quelques octets sont manquants. S'il vous plaît, analysez l'archive et retrouvez le code PIN. Nous savons que le fichier dans l'archive ne contient que le code PIN et rien d'autre.
 
@@ -28,7 +28,7 @@ for i in range(10000):
 		break
 ```
 
-Le code PIN trouve est 4583.
+Le code PIN trouvé est 4583.
 
 ## Ressources
 

@@ -84,7 +84,7 @@ builtin_strncpy(c,"Espresso",9);
 *(code **)(c + 0x20) = normal_drink;
 ```
 
-Le case 2 autorise ensuite une écriture de `0x40` octets dans cette zone. Si l'on choisit une recette valide comme espresso, la vérification ne libère pas le buffer, on peut donc corrompre le pointeur de fonction à l'offset `0x20` et de l'écrasser.
+Le case 2 autorise ensuite une écriture de `0x40` octets dans cette zone. Si l'on choisit une recette valide comme espresso, la vérification ne libère pas le buffer, on peut donc corrompre le pointeur de fonction à l'offset `0x20` et l'écrasser.
 
 ```c
 if (c == (char *)0x0) {

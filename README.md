@@ -1,10 +1,10 @@
 # Shutlock 2026
 
-Classement : 65e place
+Classement : 56e place
 
 Le Shutlock est un CTF organisé par la DSGI, OVH et EPITA.
 
-## Challenges avec raports
+## Challenges avec Write-ups
 
 - Système : AppArmor CE
 - Système : Archives à couches multiples
@@ -13,13 +13,14 @@ Le Shutlock est un CTF organisé par la DSGI, OVH et EPITA.
 
 ## Challenges réalisés 
 
-- Coffee Break — PWN — 400 points
-- Indice_6 — DEV — 50 points
-- Indice_2 — IA — 50 points
-- Extra Bon Pour Fouiller — Forensique — 392 points
-- Indice_7 — Forensique — 50 points
-- Indice_8 — OSINT — 50 points
-- ShutCorp (1/3) — Forensique — 244 points
-- Derive Aerienne — Réseau — 100 points
-- Archives à couches multiples (1/3) — Système — 100 points
-- Opération Chioné (1/5) — OSINT — 100 points
+- Forensic : Extrabon pour fouiller
+- Forensic : ShutCorp (1/3)
+- Forensic : Indice_7
+- Système : AppArmor CE
+- Système : Archives à couches multiples
+- OSINT : Opération Chioné (1/5)
+- OSINT : Indice_8
+- Pwn : Coffea break
+- Réseau : Derive Aerienne
+- IA : Indice_2
+- DEV : Indice_6

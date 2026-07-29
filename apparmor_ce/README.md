@@ -37,9 +37,11 @@ Le fichier `exploit.c` :
 
 int main(void) {
 	char buf[4096];
-	FILE *in  = fopen("/secure_data/agents.txt", "r");
+	FILE *in = fopen("/secure_data/agents.txt", "r");
 	FILE *out = fopen("/tmp/agent.txt", "w");
 	fwrite(buf, 1, fread(buf, 1, sizeof buf, in), out);
+	fclose(in);
+	fclose(out);
 	return 0;
 }
 ```

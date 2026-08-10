@@ -62,12 +62,13 @@ ip.addr == 10.0.4.219 && ip.addr == 10.0.4.101
 |--- |---|---|
 | 10.0.4.219 | Ubuntu 13.5 | 9 |
 
-On remarque plusieurs tentatives avant d'avoir enfin la connexion SSH qui s'établit.  
-Cela ressemble à de la force brute. Le fait que cette machine ait un OS et une version d'OpenSSH différents des autres machines, combiné aux échanges de force brute observés, laisse supposer qu'il s'agit de l'attaquant.
+On remarque plusieurs tentatives avant d'avoir la connexion SSH qui s'établit.  
+Cela ressemble à du brute force. Le fait que cette machine ait un OS et une version d'OpenSSH différents des autres machines, combiné aux échanges de tentatives de brute force, laisse supposer qu'il s'agit de l'attaquant.
 
-De plus, une fois la connexion établie, on observe une exploration du réseau suite à la compromission de la machine 10.0.4.101 :
+De plus, une fois la connexion établie, on observe une activité suspect suite à la compromission de la machine 10.0.4.101 :
 
-10.0.4.101 -> 10.0.4.23:389 (ldap)
+10.0.4.101 -> 10.0.4.23 (ldap)
+10.0.4.101 -> 10.0.4.200 (nfs)
 
 ### Flags
 

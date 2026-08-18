@@ -20,7 +20,7 @@ Dans `bash.txt`, on voit :
 843    bash    2026-04-14 10:13:13.000000 UTC    ./loader backdoor.bpf.o
 ```
 
-Le processus suspect est `loader`, avec le PID `873`.
+Le processus suspect est `loader` (PID `873`) qui charge un objet eBPF.
 
 ### Extraction de la mémoire
 

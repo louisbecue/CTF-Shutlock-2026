@@ -2,8 +2,6 @@
 
 Write-ups, scripts et exploits développés pour le Shutlock CTF (Classement : **56ème / 375**).
 
-## Table des challenges résolus
-
 | Catégorie    | Challenge                    | Domaine|
 |---           |---                           |---|           
 | **Pwn**      | Coffea break                 | Heap Exploitation, Function Pointer Overwrite |

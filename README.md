@@ -1,6 +1,6 @@
 # Shutlock CTF 2026
 
-Write-ups, scripts et exploits développés pour le Shutlock CTF (Classement : 56ème / 375).
+Write-ups, scripts et exploits développés pour le Shutlock CTF.
 
 | Catégorie    | Challenge                    | Domaine|
 |---           |---                           |---|           

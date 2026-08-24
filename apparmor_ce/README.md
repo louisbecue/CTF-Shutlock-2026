@@ -2,7 +2,7 @@
 
 ## Analyse
 
-Le script `scanner.sh` parcourt toutes les 30 secondes `/var/scan`, execute chaque fichier trouvé, puis le supprime. L'éxcution se fait avec une transition AppArmor vers `var_scan_binary` :
+Le script `scanner.sh` parcourt toutes les 30 secondes `/var/scan`, execute chaque fichier trouvé, puis le supprime. L'exécution se fait avec une transition AppArmor vers le profil `var_scan_binary` :
 
 ```bash
 name=$(basename "$binary")
@@ -26,7 +26,7 @@ Le profil `var_scan_binary` est plus permissif :
 /tmp/**          rw,
 ```
 
-La solution consiste donc a déposer dans `/var/scan` un binaire qui lit `/secure_data/agents.txt` et recopie le contenu dans `/tmp/agent.txt`.
+La solution cconsiste donc à éléver ses priviléges avec le profil `var_scan_binary` en déposant dans `/var/scan` un binaire qui lit `/secure_data/agents.txt` et recopie le contenu dans `/tmp/agent.txt`.
 
 ## Exploit
 
@@ -47,4 +47,3 @@ int main(void) {
 ```
 
 Le contenu se retrouve dans `/tmp/agent.txt`.
-

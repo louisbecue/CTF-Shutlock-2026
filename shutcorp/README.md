@@ -10,7 +10,7 @@ L'équipe du Security Operation Center vous a transmis la capture réseau corres
 
 Nous disposons d'un fichier netcap-ShutCorp.pcap de 73 MO
 
-Grâce au [script.py](script.py) on sait qu'on a comme différentes IP :
+Grâce a wireshark l'on sait que l'on a comme différentes IP :
 ```
 1.1.1.1
 10.0.2.1
@@ -30,6 +30,10 @@ Grâce au [script.py](script.py) on sait qu'on a comme différentes IP :
 151.101.2.132
 45.90.162.253
 ```
+
+![](./screenshot_adress.png)
+
+![](./screenshot_conv.png)
 
 D'abord en analysant les différentes IP présentes sur le réseau 10.0.4.0/24 qui semble être le réseau privé de l'entreprise.
 

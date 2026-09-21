@@ -10,7 +10,19 @@ Trouverez-vous le bon dosage pour faire sauter les verrous ?
 
 ## Analyse
 
-L'analyse de la fonction main sous Ghidra montre que le binaire `coffea_break` montre une vulnérabilité de corruption mémoire dans la fonction `main`:
+Grâce à la commande checksec: 
+```bash
+Arch:       amd64-64-little
+    RELRO:      Full RELRO
+    Stack:      Canary found
+    NX:         NX enabled
+    PIE:        PIE enabled
+    SHSTK:      Enabled
+    IBT:        Enabled
+    Stripped:   No
+``` 
+
+L'analyse de la fonction main sous Ghidra montre que le binaire `coffea_break` montre une vulnérabilité de corruption mémoire (écrasement de pointeur de fonction) dans la fonction `main`:
 
 ```c
 void main(void)
@@ -135,6 +147,8 @@ void secret(void)
 | `normal_drink` | `0x001012ea` |
 
 ## Exploitation
+
+Comme `normal_drink` et `secret` sont dans la même page mémoire, le PIE est contourné avec un overwrite du dernier octet.
 
 On doit donc :
 
